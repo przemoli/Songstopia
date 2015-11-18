@@ -45,4 +45,52 @@ class Band
     {
         return $this->id;
     }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Band
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set founded
+     *
+     * @param \DateTime $founded
+     *
+     * @return Band
+     */
+    public function setFounded($founded)
+    {
+        $this->founded = $founded;
+
+        return $this;
+    }
+
+    /**
+     * Get founded
+     *
+     * @return \DateTime
+     */
+    public function getFounded()
+    {
+        return $this->founded;
+    }
 }

@@ -38,4 +38,28 @@ class Nomination
     {
         return $this->id;
     }
+
+    /**
+     * Set votes
+     *
+     * @param integer $votes
+     *
+     * @return Nomination
+     */
+    public function setVotes($votes)
+    {
+        $this->votes = $votes;
+
+        return $this;
+    }
+
+    /**
+     * Get votes
+     *
+     * @return integer
+     */
+    public function getVotes()
+    {
+        return $this->votes;
+    }
 }
