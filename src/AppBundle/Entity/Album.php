@@ -117,4 +117,62 @@ class Album
     {
         return $this->published;
     }
+
+    /**
+     * Set band
+     *
+     * @param \AppBundle\Entity\Band $band
+     *
+     * @return Album
+     */
+    public function setBand(\AppBundle\Entity\Band $band)
+    {
+        $this->band = $band;
+
+        return $this;
+    }
+
+    /**
+     * Get band
+     *
+     * @return \AppBundle\Entity\Band
+     */
+    public function getBand()
+    {
+        return $this->band;
+    }
+
+    /**
+     * Add song
+     *
+     * @param \AppBundle\Entity\Song $song
+     *
+     * @return Album
+     */
+    public function addSong(\AppBundle\Entity\Song $song)
+    {
+        $this->songs[] = $song;
+
+        return $this;
+    }
+
+    /**
+     * Remove song
+     *
+     * @param \AppBundle\Entity\Song $song
+     */
+    public function removeSong(\AppBundle\Entity\Song $song)
+    {
+        $this->songs->removeElement($song);
+    }
+
+    /**
+     * Get songs
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSongs()
+    {
+        return $this->songs;
+    }
 }

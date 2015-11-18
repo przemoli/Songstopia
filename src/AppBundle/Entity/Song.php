@@ -71,4 +71,28 @@ class Song
     {
         return $this->name;
     }
+
+    /**
+     * Set album
+     *
+     * @param \AppBundle\Entity\Album $album
+     *
+     * @return Song
+     */
+    public function setAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->album = $album;
+
+        return $this;
+    }
+
+    /**
+     * Get album
+     *
+     * @return \AppBundle\Entity\Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
 }

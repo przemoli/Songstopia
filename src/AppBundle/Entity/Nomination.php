@@ -71,4 +71,28 @@ class Nomination
     {
         return $this->votes;
     }
+
+    /**
+     * Set ballot
+     *
+     * @param \AppBundle\Entity\Ballot $ballot
+     *
+     * @return Nomination
+     */
+    public function setBallot(\AppBundle\Entity\Ballot $ballot)
+    {
+        $this->ballot = $ballot;
+
+        return $this;
+    }
+
+    /**
+     * Get ballot
+     *
+     * @return \AppBundle\Entity\Ballot
+     */
+    public function getBallot()
+    {
+        return $this->ballot;
+    }
 }

@@ -108,4 +108,38 @@ class Ballot
     {
         return $this->description;
     }
+
+    /**
+     * Add nomination
+     *
+     * @param \AppBundle\Entity\Nomination $nomination
+     *
+     * @return Ballot
+     */
+    public function addNomination(\AppBundle\Entity\Nomination $nomination)
+    {
+        $this->nominations[] = $nomination;
+
+        return $this;
+    }
+
+    /**
+     * Remove nomination
+     *
+     * @param \AppBundle\Entity\Nomination $nomination
+     */
+    public function removeNomination(\AppBundle\Entity\Nomination $nomination)
+    {
+        $this->nominations->removeElement($nomination);
+    }
+
+    /**
+     * Get nominations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNominations()
+    {
+        return $this->nominations;
+    }
 }
