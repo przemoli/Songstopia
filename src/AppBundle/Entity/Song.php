@@ -28,6 +28,15 @@ class Song
      */
     private $name;
 
+    /**
+     * @var Album
+     *
+     * @ORM\ManyToOne(targetEntity="Album", inversedBy="songs")
+     * @ORM\JoinColumn(name="album_id", referencedColumnName="id",
+     *   nullable=false)
+     */
+    private $album;
+
 
     /**
      * Get id

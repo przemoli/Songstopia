@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Album
@@ -33,8 +34,31 @@ class Album
      *
      * @ORM\Column(type="date")
      */
-     private $published;
+    private $published;
 
+    /**
+     * @var Band
+     *
+     * @ORM\ManyToOne(targetEntity="Band", inversedBy="albums")
+     * @ORM\JoinColumn(name="band_id", referencedColumnName="id",
+     *   nullable=false)
+     */
+    private $band;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Song", mappedBy="album")
+     */
+    private $songs;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+      $this->songs = new ArrayCollection();
+    }
 
     /**
      * Get id

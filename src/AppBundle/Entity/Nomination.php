@@ -28,6 +28,15 @@ class Nomination
      */
     private $votes;
 
+    /**
+     * @var Ballot
+     *
+     * @ORM\ManyToOne(targetEntity="Ballot", inversedBy="nominations")
+     * @ORM\JoinColumn(name="ballot_id", referencedColumnName="id",
+     *   nullable=false)
+     */
+    private $ballot;
+
 
     /**
      * Get id

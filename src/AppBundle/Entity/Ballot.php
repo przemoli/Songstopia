@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Ballot
@@ -35,6 +36,20 @@ class Ballot
      */
     private $description;
 
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Nomination", mappedBy="ballot")
+     */
+    private $nominations;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+      $this->nominations = new ArrayCollection();
+    }
 
     /**
      * Get id

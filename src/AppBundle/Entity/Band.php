@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Band
@@ -33,8 +34,23 @@ class Band
      *
      * @ORM\Column(type="date")
      */
-     private $founded;
+    private $founded;
 
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Album", mappedBy="band")
+     */
+    private $albums;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+      $this->albums = new ArrayCollection();
+    }
 
     /**
      * Get id
