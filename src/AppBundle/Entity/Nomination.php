@@ -21,6 +21,13 @@ class Nomination
      */
     private $id;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(type="integer", options={"default" = 0})
+     */
+    private $votes;
+
 
     /**
      * Get id
@@ -32,4 +39,3 @@ class Nomination
         return $this->id;
     }
 }
-

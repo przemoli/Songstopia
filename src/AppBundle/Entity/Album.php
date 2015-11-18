@@ -21,6 +21,20 @@ class Album
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=250)
+     */
+    private $name;
+
+    /**
+     * @var date
+     *
+     * @ORM\Column(type="date")
+     */
+     private $published;
+
 
     /**
      * Get id

@@ -21,6 +21,13 @@ class Song
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=250)
+     */
+    private $name;
+
 
     /**
      * Get id
@@ -32,4 +39,3 @@ class Song
         return $this->id;
     }
 }
-

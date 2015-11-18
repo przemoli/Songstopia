@@ -21,6 +21,20 @@ class Ballot
      */
     private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=250)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     */
+    private $description;
+
 
     /**
      * Get id
@@ -32,4 +46,3 @@ class Ballot
         return $this->id;
     }
 }
-
