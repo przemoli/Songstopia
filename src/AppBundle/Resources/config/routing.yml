@@ -1,0 +1,22 @@
+bands:
+  type: rest
+  resource: AppBundle\Controller\BandController
+
+albums:
+  type: rest
+  parent: bands
+  resource: AppBundle\Controller\AlbumController
+
+songs:
+  type: rest
+  parent: albums
+  resource: AppBundle\Controller\SongController
+
+ballots:
+  type: rest
+  resource: AppBundle\Controller\BallotController
+
+nominations:
+  type: rest
+  parent: ballots
+  resource: AppBundle\Controller\NominationController
