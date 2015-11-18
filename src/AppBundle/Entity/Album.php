@@ -153,6 +153,8 @@ class Album
     {
         $this->songs[] = $song;
 
+        $song->setAlbum($this);
+
         return $this;
     }
 

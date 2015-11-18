@@ -120,6 +120,8 @@ class Ballot
     {
         $this->nominations[] = $nomination;
 
+        $nomination->setBallot($nomination);
+
         return $this;
     }
 

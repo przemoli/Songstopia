@@ -121,6 +121,8 @@ class Band
     {
         $this->albums[] = $album;
 
+        $album->setBand($this);
+
         return $this;
     }
 
