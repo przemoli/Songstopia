@@ -19,14 +19,15 @@ class BallotType extends AbstractType
             ->add('description')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Ballot'
+            'data_class' => 'AppBundle\Entity\Ballot',
+            'csrf_protection' => false
         ));
     }
 

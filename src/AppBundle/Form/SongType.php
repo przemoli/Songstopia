@@ -19,14 +19,15 @@ class SongType extends AbstractType
             ->add('album')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Song'
+            'data_class' => 'AppBundle\Entity\Song',
+            'csrf_protection' => false
         ));
     }
 

@@ -19,14 +19,15 @@ class NominationType extends AbstractType
             ->add('ballot')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Nomination'
+            'data_class' => 'AppBundle\Entity\Nomination',
+            'csrf_protection' => false
         ));
     }
 
