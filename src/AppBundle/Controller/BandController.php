@@ -14,7 +14,9 @@ use AppBundle\Form\BandType;
 class BandController extends FOSRestController
 {
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Get Band by id"
+   * )
    */
   public function getAction($id)
   {
@@ -28,7 +30,11 @@ class BandController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Create new band",
+   *   input="AppBundle\Form\BandType",
+   *   output="AppBundle\Entity\Band"
+   * )
    */
   public function postAction(Request $request)
   {
@@ -38,7 +44,10 @@ class BandController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Update band",
+   *   input="AppBundle\Form\BandType"
+   * )
    */
   public function putAction($id, Request $request)
   {
@@ -53,7 +62,9 @@ class BandController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Delete band by id"
+   * )
    */
   public function deleteAction($id)
   {

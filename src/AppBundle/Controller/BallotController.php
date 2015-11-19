@@ -14,7 +14,9 @@ use AppBundle\Form\BallotType;
 class BallotController extends FOSRestController
 {
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Get Ballot by id"
+   * )
    */
   public function getAction($id)
   {
@@ -28,7 +30,11 @@ class BallotController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Create new ballot",
+   *   input="AppBundle\Form\BallotType",
+   *   output="AppBundle\Entity\Ballot"
+   * )
    */
   public function postAction()
   {
@@ -38,7 +44,10 @@ class BallotController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Update ballot",
+   *   input="AppBundle\Form\BallotType"
+   * )
    */
   public function putAction()
   {
@@ -53,7 +62,9 @@ class BallotController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Delete ballot by id"
+   * )
    */
   public function deleteAction($id)
   {

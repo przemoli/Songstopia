@@ -14,7 +14,9 @@ use AppBundle\Form\AlbumType;
 class AlbumController extends FOSRestController
 {
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Get Album by band, album ids"
+   * )
    */
   public function getAction($albumID, $id)
   {
@@ -28,7 +30,11 @@ class AlbumController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Create new album",
+   *   input="AppBundle\Form\AlbumType",
+   *   output="AppBundle\Entity\Album"
+   * )
    */
   public function postAction()
   {
@@ -38,7 +44,10 @@ class AlbumController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Update album",
+   *   input="AppBundle\Form\AlbumType"
+   * )
    */
   public function putAction()
   {
@@ -53,7 +62,9 @@ class AlbumController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Delete album by id"
+   * )
    */
   public function deleteAction($id)
   {

@@ -14,7 +14,9 @@ use AppBundle\Form\NominationType;
 class NominationController extends FOSRestController
 {
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Get Nomination by ballot, nomination ids"
+   * )
    */
   public function getAction($ballotID, $id)
   {
@@ -28,7 +30,11 @@ class NominationController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Create new nomination",
+   *   input="AppBundle\Form\NominationType",
+   *   output="AppBundle\Entity\Nomination"
+   * )
    */
   public function postAction()
   {
@@ -38,7 +44,10 @@ class NominationController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Update nomination",
+   *   input="AppBundle\Form\NominationType"
+   * )
    */
   public function putAction()
   {
@@ -53,7 +62,9 @@ class NominationController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Delete nomination by id"
+   * )
    */
   public function deleteAction($id)
   {

@@ -14,7 +14,9 @@ use AppBundle\Form\SongType;
 class SongController extends FOSRestController
 {
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Get Song by band, album, song ids"
+   * )
    */
   public function getAction($songID, $albumID, $id)
   {
@@ -28,7 +30,11 @@ class SongController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Create new song",
+   *   input="AppBundle\Form\SongType",
+   *   output="AppBundle\Entity\Song"
+   * )
    */
   public function postAction()
   {
@@ -38,7 +44,10 @@ class SongController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Update song",
+   *   input="AppBundle\Form\SongType"
+   * )
    */
   public function putAction()
   {
@@ -53,7 +62,9 @@ class SongController extends FOSRestController
   }
 
   /**
-   * @ApiDoc()
+   * @ApiDoc(
+   *   description="Delete song by id"
+   * )
    */
   public function deleteAction($id)
   {
