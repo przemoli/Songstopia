@@ -16,7 +16,7 @@ class AlbumType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('published')
+            ->add('published', 'date', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
             ->add('band')
         ;
     }

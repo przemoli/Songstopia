@@ -16,7 +16,7 @@ class BandType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('founded')
+            ->add('founded', 'date', array('widget' => 'single_text', 'format' => 'yyyy-MM-dd'))
         ;
     }
 
