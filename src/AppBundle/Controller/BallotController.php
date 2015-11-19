@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use AppBundle\Entity\Ballot;
 use AppBundle\Form\BallotType;
 
 /**
@@ -13,6 +14,19 @@ use AppBundle\Form\BallotType;
  */
 class BallotController extends FOSRestController
 {
+  /**
+   * @ApiDoc(
+   *   description="Get all ballots"
+   * )
+   */
+  public function cgetAction()
+  {
+    $ballots = $this->getDoctrine()
+                ->getRepository('AppBundle:Ballot')
+                ->findAll();
+    return $ballots;
+  }
+
   /**
    * @ApiDoc(
    *   description="Get Ballot by id"
@@ -36,7 +50,7 @@ class BallotController extends FOSRestController
    *   output="AppBundle\Entity\Ballot"
    * )
    */
-  public function postAction()
+  public function postAction(Request $request)
   {
     $ballot = new Ballot();
 
@@ -49,7 +63,7 @@ class BallotController extends FOSRestController
    *   input="AppBundle\Form\BallotType"
    * )
    */
-  public function putAction()
+  public function putAction(Request $request, $id)
   {
     $ballot = $this->getDoctrine()
                 ->getRepository('AppBundle:Ballot')
@@ -89,7 +103,7 @@ class BallotController extends FOSRestController
       $em->flush();
 
     } else {
-
+      throw new \Exception($form->getErrorsAsString());
     }
   }
 }

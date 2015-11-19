@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use AppBundle\Entity\Nomination;
 use AppBundle\Form\NominationType;
 
 /**
@@ -13,6 +14,19 @@ use AppBundle\Form\NominationType;
  */
 class NominationController extends FOSRestController
 {
+  /**
+   * @ApiDoc(
+   *   description="Get all nominations"
+   * )
+   */
+  public function cgetAction()
+  {
+    $nominations = $this->getDoctrine()
+                ->getRepository('AppBundle:Nomination')
+                ->findAll();
+    return $nominations;
+  }
+
   /**
    * @ApiDoc(
    *   description="Get Nomination by ballot, nomination ids"
@@ -36,7 +50,7 @@ class NominationController extends FOSRestController
    *   output="AppBundle\Entity\Nomination"
    * )
    */
-  public function postAction()
+  public function postAction(Request $request)
   {
     $nomination = new Nomination();
 
@@ -49,7 +63,7 @@ class NominationController extends FOSRestController
    *   input="AppBundle\Form\NominationType"
    * )
    */
-  public function putAction()
+  public function putAction(Request $request, $id)
   {
     $nomination = $this->getDoctrine()
                 ->getRepository('AppBundle:Nomination')
@@ -92,7 +106,7 @@ class NominationController extends FOSRestController
       $em->flush();
 
     } else {
-
+      throw new \Exception($form->getErrorsAsString());
     }
   }
 }

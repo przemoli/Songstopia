@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use AppBundle\Entity\Band;
 use AppBundle\Form\BandType;
 
 /**
@@ -13,6 +14,19 @@ use AppBundle\Form\BandType;
  */
 class BandController extends FOSRestController
 {
+  /**
+   * @ApiDoc(
+   *   description="Get all bands"
+   * )
+   */
+  public function cgetAction()
+  {
+    $bands = $this->getDoctrine()
+                ->getRepository('AppBundle:Band')
+                ->findAll();
+    return $bands;
+  }
+
   /**
    * @ApiDoc(
    *   description="Get Band by id"
@@ -49,7 +63,7 @@ class BandController extends FOSRestController
    *   input="AppBundle\Form\BandType"
    * )
    */
-  public function putAction($id, Request $request)
+  public function putAction(Request $request, $id)
   {
     $band = $this->getDoctrine()
                 ->getRepository('AppBundle:Band')
@@ -89,7 +103,7 @@ class BandController extends FOSRestController
       $em->flush();
 
     } else {
-
+      throw new \Exception($form->getErrorsAsString());
     }
   }
 }

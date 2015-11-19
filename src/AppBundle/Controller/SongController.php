@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use AppBundle\Entity\Song;
 use AppBundle\Form\SongType;
 
 /**
@@ -13,6 +14,19 @@ use AppBundle\Form\SongType;
  */
 class SongController extends FOSRestController
 {
+  /**
+   * @ApiDoc(
+   *   description="Get all songs"
+   * )
+   */
+  public function cgetAction()
+  {
+    $songs = $this->getDoctrine()
+                ->getRepository('AppBundle:Song')
+                ->findAll();
+    return $songs;
+  }
+
   /**
    * @ApiDoc(
    *   description="Get Song by band, album, song ids"
@@ -36,7 +50,7 @@ class SongController extends FOSRestController
    *   output="AppBundle\Entity\Song"
    * )
    */
-  public function postAction()
+  public function postAction(Request $request)
   {
     $song = new Song();
 
@@ -49,7 +63,7 @@ class SongController extends FOSRestController
    *   input="AppBundle\Form\SongType"
    * )
    */
-  public function putAction()
+  public function putAction(Request $request, $id)
   {
     $song = $this->getDoctrine()
                 ->getRepository('AppBundle:Song')
@@ -92,7 +106,7 @@ class SongController extends FOSRestController
       $em->flush();
 
     } else {
-
+      throw new \Exception($form->getErrorsAsString());
     }
   }
 }

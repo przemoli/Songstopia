@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\RouteResource;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use AppBundle\Entity\Album;
 use AppBundle\Form\AlbumType;
 
 /**
@@ -13,6 +14,19 @@ use AppBundle\Form\AlbumType;
  */
 class AlbumController extends FOSRestController
 {
+  /**
+   * @ApiDoc(
+   *   description="Get all albums"
+   * )
+   */
+  public function cgetAction()
+  {
+    $albums = $this->getDoctrine()
+                ->getRepository('AppBundle:Album')
+                ->findAll();
+    return $albums;
+  }
+
   /**
    * @ApiDoc(
    *   description="Get Album by band, album ids"
@@ -36,7 +50,7 @@ class AlbumController extends FOSRestController
    *   output="AppBundle\Entity\Album"
    * )
    */
-  public function postAction()
+  public function postAction(Request $request)
   {
     $album = new Album();
 
@@ -49,7 +63,7 @@ class AlbumController extends FOSRestController
    *   input="AppBundle\Form\AlbumType"
    * )
    */
-  public function putAction()
+  public function putAction(Request $request, $id)
   {
     $album = $this->getDoctrine()
                 ->getRepository('AppBundle:Album')
@@ -92,7 +106,7 @@ class AlbumController extends FOSRestController
       $em->flush();
 
     } else {
-
+      throw new \Exception($form->getErrorsAsString());
     }
   }
 }
